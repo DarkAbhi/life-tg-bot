@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  telbot:
+    image: tele-life-bot:latest
+    env_file:
+      - ./.env
