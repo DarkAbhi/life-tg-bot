@@ -47,3 +47,5 @@ GADGETS = "Gadgets"
 GADGETS_ID = 10
 FITNESS = "Fitness"
 FITNESS_ID = 11
+FOOD = "Food"
+FOOD_ID = 12

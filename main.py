@@ -140,9 +140,10 @@ def handle_transaction_amount_input(message, transaction_name, transaction_date)
     itembtn9 = types.KeyboardButton(f'{constants.TRIPS}')
     itembtn10 = types.KeyboardButton(f'{constants.GADGETS}')
     itembtn11 = types.KeyboardButton(f'{constants.FITNESS}')
-    itembtn12 = types.KeyboardButton(f'{constants.CANCEL}')
+    itembtn12 = types.KeyboardButton(f'{constants.FOOD}')
+    itembtn13 = types.KeyboardButton(f'{constants.CANCEL}')
     markup.add(itembtn1, itembtn2, itembtn3, itembtn4, itembtn5,
-               itembtn6, itembtn7, itembtn8, itembtn9, itembtn10, itembtn11, itembtn12)
+               itembtn6, itembtn7, itembtn8, itembtn9, itembtn10, itembtn11, itembtn12, itembtn13)
     bot.send_message(message.chat.id, "Now choose a category.",
                      reply_markup=markup)
     bot.register_next_step_handler(
@@ -160,7 +161,8 @@ def handle_transaction_category_input(message, transaction_name, transaction_dat
         bot.register_next_step_handler(
             message, process_transaction_vehicle_query, transaction_name, transaction_date, transaction_amount, message.text)
     elif message.text == constants.CANCEL:
-        bot.reply_to(message, "Okay.")
+        bot.send_message(message.chat.id, "Okay.",
+                                 reply_markup=types.ReplyKeyboardRemove())
     else:
         try:
             response = requests.post(

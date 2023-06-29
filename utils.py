@@ -25,3 +25,5 @@ def get_category_id(category):
             return constants.GADGETS_ID
         case constants.FITNESS:
             return constants.FITNESS_ID
+        case constants.FOOD:
+            return constants.FOOD_ID
