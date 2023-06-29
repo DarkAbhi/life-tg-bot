@@ -89,7 +89,12 @@ def handle_transactions_option(message):
         try:
             response = requests.get(
                 f'{api_constants.BASE_URL}{api_constants.TRANSACTION_ENDPOINT}')
-            print(response.json())
+            transactions = response.json()
+            text = "Here are your recent transactions\n"
+            for transaction  in transactions:
+                text = text + f'Name: *{transaction["name"]}*, you spent ₹{transaction["amount"]}\n'
+            bot.send_message(
+                message.chat.id, text, reply_markup=types.ReplyKeyboardRemove())
         except requests.exceptions.ConnectionError:
             bot.send_message(
                 message.chat.id, 'An unexpected error occured.', reply_markup=types.ReplyKeyboardRemove())
